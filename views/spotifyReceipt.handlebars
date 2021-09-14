@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receiptify</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div id="login">
+      <h1>Receiptify</h1>
+      <h2>Top Track Generator</h2>
+      <div id="loggedin">
+        <div id="options">
+          <button class="btn time-btn" id="short_term">Last Month</button>
+          <button class="btn time-btn" id="medium_term">Last 6 Months</button>
+          <button class="btn time-btn" id="long_term">All Time</button>
+        </div>
+        <div id="receipt">
+          <div class="receiptContainer">
+            <h2 class="logo">
+              RECEIPTIFY
+            </h2>
+            <p class="period">
+              {{period}}
+            </p>
+            <p class="date">
+              ORDER #000{{num}} FOR {{name}}
+            </p>
+            <p class="date">
+              {{time}}
+            </p>
+            <table class="tracks">
+              <thead>
+                <td class="begin">
+                  QTY
+                </td>
+                <td>
+                  ITEM
+                </td>
+                <td class="length">
+                  AMT
+                </td>
+              </thead>
+              {{#each tracks}}
+              <tr>
+                <td class="begin">
+                  {{this.id}}
+                </td>
+                <td class="name">
+                  {{this.name}} -
+                  {{#each this.artists}}
+                  <span>
+                    {{this.name}}
+                  </span>
+                  {{/each}}
+                </td>
+                <td class="length">
+                  {{this.duration_ms}}
+                </td>
+              </tr>
+              {{/each}}
+              <tr class="total-counts">
+                <td class="begin" colspan="2">
+                  ITEM COUNT:
+                </td>
+                <td class="length">
+                  10
+                </td>
+              </tr>
+              <tr class="total-counts-end">
+                <td class="begin" colspan="2">
+                  TOTAL:
+                </td>
+                <td class="length">
+                  {{total}}
+                </td>
+              </tr>
+            </table>
+            <p class="date">
+              CARD #: **** **** **** 2021
+            </p>
+            <p class="date">
+              AUTH CODE: 123421
+            </p>
+            <p class="date">
+              CARDHOLDER: {{name}}
+            </p>
+            <div class="thanks">
+              <p>
+                THANK YOU FOR VISITING!
+              </p>
+              <img src="barcode.png" />
+              <p class="website">
+                receiptify.herokuapp.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn time-btn" id="download">
+    Download Image
+  </button>
+  <script src="/server.js"></script>
+  </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+  <script src="/dom-to-image.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Receiptify</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div id="login">
+				<h1>Receiptify</h1>
+				<h2>Top Track Generator</h2>
+        <a href="/login" class="login-btn">Log in with Spotify</a>
+				<a href="/lastfm" class="login-btn lastfm">Last.fm</a>
+				<a href="/applemusic" class="login-btn apple">Log in with Apple Music*</a>
+				<p class="info">
+					This website was inspired by the Instagram account <a href="https://www.instagram.com/albumreceipts/">@albumreceipts</a>!</p>
+				</p>
+				<p class="info">
+					Made by <a href="https://michellexliu.me">Michelle Liu</a>. <br />
+					<a href="https://paypal.me/mchelleliu" target="_blank">PayPal</a> |
+					<a href="https://venmo.com/Michelle-Liuu" target="_blank">Venmo</a>
+				</p>
+				<p class="info">
+					*If nothing is happening when you try to log in with Apple Music, it may be because pop-ups are blocked on your browser or device. Enable them and try again!<br />
+					<a href="https://support.google.com/chrome/answer/95472?co=GENIE.Platform%3DiOS&hl=en" target="_blank">Allowing pop-ups in Chrome</a> |
+					<a href="https://kb.wisc.edu/helpdesk/page.php?id=40874" target="_blank">Allowing pop-ups in Safari (iOS)</a>
+				</p>
+			</div>
+			<div id="loggedin">
+				<h1>Receiptify</h1>
+				<h2>Top Track Generator</h2>
+				<div id="options">
+					<button class="time-btn" id="short_term">Last Month</button>
+					<button class="time-btn" id="medium_term">Last 6 Months</button>
+					<button class="time-btn" id="long_term">All Time</button>
+				</div>
+				<div id="receipt"></div>
+			</div>
+		</div>
+		<script id="user-profile-template" type="text/x-handlebars-template">
+			<div class='receiptContainer'>
+				<h2 class='logo'>
+					RECEIPTIFY
+				</h2>
+				<p class='period'>
+					{{period}}
+				</p>
+				<p class='date'>
+					ORDER #000{{num}} FOR {{name}}
+				</p>
+				<p class='date'>
+					{{time}}
+				</p>
+				<table class='tracks'>
+					<thead>
+						<td class='begin'>
+							QTY
+						</td>
+						<td>
+							ITEM
+						</td>
+						<td class='length'>
+							AMT
+						</td>
+					</thead>
+					{{#each tracks}}
+						<tr>
+							<td class='begin'>
+								{{this.id}}
+							</td>
+							<td class='name'>
+								{{this.name}}
+								{{#each this.artists}}
+									<span>
+										{{this.name}}
+									</span>
+								{{/each}}
+							</td>
+							<td class='length'>
+								{{this.duration_ms}}
+							</td>
+						</tr>
+					{{/each}}
+					<tr class='total-counts'>
+						<td class='begin' colspan='2'>
+							ITEM COUNT:
+						</td>
+						<td class='length'>
+							10
+						</td>
+					</tr>
+					<tr class='total-counts-end'>
+						<td class='begin' colspan='2'>
+							TOTAL:
+						</td>
+						<td class='length'>
+							{{total}}
+						</td>
+					</tr>
+				</table>
+				<p class='date'>
+					CARD #: **** **** **** 2021
+				</p>
+				<p class='date'>
+					AUTH CODE: 123421
+				</p>
+				<p class='date'>
+					CARDHOLDER: {{name}}
+				</p>
+				<div class='thanks'>
+					<p>
+						THANK YOU FOR VISITING!
+					</p>
+					<img src='barcode.png' />
+					<p class="website">
+						receiptify.herokuapp.com
+					</p>
+				</div>
+			</div>
+			<button class="time-btn" id="download">Download Image</button>
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+		<script src="dom-to-image.min.js"></script>
+		<script src="FileSaver.min.js"></script>
+		<script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+		<script src="server.js"></script>
+	</body>
+</html>

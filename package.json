@@ -1,0 +1,23 @@
+{
+  "name": "receiptify",
+  "version": "1.0.0",
+  "description": "Genereates receipts based on a user's spotify listening history.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michelle Liu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2"
+  }
+}
