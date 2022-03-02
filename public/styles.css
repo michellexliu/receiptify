@@ -6,6 +6,19 @@
   src: url("Merchant_Copy.ttf") format("truetype");
 }
 
+html,
+body {
+  background-color: #0d0b10;
+  color: #d9d9d9;
+  font-size: 0.75rem;
+}
+
+:root {
+  --spotify-button: 141.2, 73%;
+  --lastfm-button: 0, 0%;
+  --apple-button: 356, 94%;
+}
+
 h1 {
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 600;
@@ -13,16 +26,20 @@ h1 {
   text-align: center;
   margin-bottom: 0px;
 }
+
 h2 {
   font-size: 2.5rem;
   margin-top: 0px;
 }
+
 .container h2 {
   text-align: center;
 }
+
 p {
   font-family: Helvetica, Geneva, Tahoma, sans-serif;
 }
+
 .logo {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 600;
@@ -30,16 +47,36 @@ p {
   text-align: center;
   padding-top: 15px;
 }
+
 .info {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   text-align: center;
+  background-color: #131016;
+  padding: 15px;
+  border-radius: 7px;
+  margin-top: 15px;
 }
+
+.info a {
+  text-decoration: none;
+}
+
 .period {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 15px;
 }
+
+.login-btn {
+  display: flex;
+}
+
+
+.login-btn img {
+  height: 35px;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -47,26 +84,82 @@ p {
   flex-direction: column;
   justify-content: center;
 }
+
 .login-btn {
   margin: 2vh auto;
   text-align: center;
   text-decoration: none;
   padding: 2vh 5vh;
-  background-color: #1db954;
+  background-color: hsl(var(--spotify-button), 42%);
   font-size: 20px;
   border: none;
   cursor: pointer;
   border-radius: 10px;
   color: white;
   font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+  transition: background-color .2s;
+  width: 340px;
+  min-width: max-content;
+}
+
+#downloadBox {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #131016;
+  width: 240px;
+}
+
+#downloadBox p {
+  font-family: Helvetica, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  opacity: .75;
+  margin: 0;
+}
+
+.login-btn span {
+  margin: auto;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.login-btn:hover {
+  background-color: hsl(var(--spotify-button), 45%);
+}
+
+.login-btn:focus {
+  text-decoration: none;
+  color: white;
+  background-color: hsl(var(--spotify-button), 40%);
 }
 
 .apple {
   background-color: #f94c57;
 }
 
+.apple:hover {
+  background-color: hsl(var(--apple-button), 70%);
+}
+
+.apple:focus {
+  background-color: hsl(var(--apple-button), 65%);
+
+}
+
 .lastfm {
   background-color: black;
+}
+
+.lastfm:hover {
+  background-color: hsl(var(--lastfm-button), 8%);
+}
+
+.lastfm:focus {
+  background-color: hsl(var(--lastfm-button), 2%);
 }
 
 .time-btn {
@@ -83,10 +176,12 @@ p {
   margin: 0vh 1vh;
   width: auto;
 }
+
 .login-btn:hover {
   text-decoration: none;
   color: white;
 }
+
 #options,
 #appleoption {
   margin: 0px auto;
@@ -94,21 +189,26 @@ p {
   flex-direction: row;
   justify-content: center;
 }
+
 .hidden {
   display: none;
 }
+
 #loggedin,
 #login {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .date {
   margin: 0vh;
 }
+
 .tracks {
   margin: 5px 0vh;
 }
+
 #receipt {
   clear: both;
   display: flex;
@@ -118,6 +218,7 @@ p {
   justify-content: center;
   margin: 25px auto;
 }
+
 .username-input {
   display: flex;
   flex-direction: row;
@@ -125,23 +226,29 @@ p {
   align-items: center;
   padding: 2vh;
 }
+
 .username-input * {
   margin: 2%;
 }
+
 .receiptContainer {
   background-image: url("wrinkled-paper-texture-7.jpg");
   background-position: center;
   width: 340px;
   filter: brightness(110%);
   padding: 20px;
+  color: black;
   text-transform: uppercase;
 }
+
 .begin {
   padding-left: 0vh;
 }
+
 #download {
   margin-top: 2vh;
 }
+
 p,
 table,
 .date {
@@ -157,60 +264,76 @@ table,
 table {
   border: none;
 }
+
 .total-counts {
   border-top: 1px dashed;
 }
+
 .total-counts-end {
   border-bottom: 1px dashed;
 }
+
 thead {
   border-top: 1px dashed;
   border-bottom: 1px dashed;
 }
+
 td {
   padding: 2px 10px;
   vertical-align: top;
 }
+
 .name {
   width: 225px;
   overflow: auto;
 }
+
 .length {
   text-align: right;
   padding-left: 10px;
   padding-right: 0px;
 }
+
 .website {
   margin-bottom: 0px;
   text-transform: lowercase;
 }
+
 .thanks {
   text-align: center;
   padding: 15px 0px;
 }
+
 .thanks img {
   width: 70%;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
+
   #loggedin,
   #login {
     width: 100%;
   }
+
   .container {
     width: 100%;
   }
 }
+
 @media only screen and (max-width: 767px) {
   #options {
     flex-direction: column;
   }
+
   #loggedin,
   #login {
     width: 100%;
   }
+
   .time-btn {
     margin: 1vh auto;
   }
+
   .container {
     width: 100%;
   }
