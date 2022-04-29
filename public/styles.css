@@ -191,6 +191,82 @@ td {
 .thanks img {
   width: 70%;
 }
+
+/** -- Added for Anthems Partnership --**/
+.header-section {
+  margin-top: 10px;
+  width: 964px;
+}
+
+.seperator {
+  width: 100%;
+  padding: 0 30%;
+}
+
+.seperator hr {
+  width: 100%;
+  border-top: 1px solid #E5E5E5;
+}
+
+.announcing-text {
+  color: #FD1200;
+  border-radius: 35px;
+  width: 105px;
+  height: 28px;
+  background-color: #FAE6E6;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.middle-container {
+  text-align: center;
+}
+
+.middle-container .title {
+  font-family: "Helvetica Neue";
+  font-size: 32px;
+  font-weight: bold;
+  padding: 24px 2px 16px 2px;
+}
+
+.middle-container .subtitle {
+  font-family: "Helvetica Neue";
+  font-size: 18px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.store-icons {
+  width: 284.74px;
+  height: 40px;
+  margin: 16px;
+  cursor: pointer;
+}
+
+.anthems-logo {
+  width: 178.04px;
+  height: 40px;
+  margin: 16px;
+  cursor: pointer;
+}
+
+.mixes-promo {
+  width: 368px;
+  height: 294.49px;
+  background-image: url(assets/img/mixes-promo.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  margin-bottom: 55px;
+  cursor: pointer;
+}
+/** -- End of Added for Anthems Partnership --**/
+
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
   #loggedin,
   #login {
@@ -213,5 +289,34 @@ td {
   }
   .container {
     width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .header-section {
+    width: 100%;
+    padding: 0 32px;
+  }
+
+  .seperator {
+    padding: 0;
+  }
+
+  .mixes-promo {
+    background-image: url(assets/img/mixes-promo-mobile.jpg);
+    width: auto;
+    height: 190.96px;
+    max-width: 337px;
+  }
+
+  .middle-container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 330px) {
+  .header-section {
+    padding: 0 15px;
   }
 }
