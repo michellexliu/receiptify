@@ -88,6 +88,11 @@ p {
   margin: 0vh 1vh;
   width: auto;
 }
+.btn-disabled {
+  background-color: white;
+  border: 2px solid gray;
+  color: gray;
+}
 .login-btn:hover {
   text-decoration: none;
   color: white;

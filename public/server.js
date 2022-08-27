@@ -62,10 +62,13 @@
   }
 
   function createSpotifyPlaylist(timeRangeSlug, songIds) {
+    $("#create-playlist").button('loading')
+    document.getElementById("create-playlist").classList.add("btn-disabled")
+
     const spotifyUserId = localStorage.getItem("spotifyUserId")
     let timeSlug = 'last month'
-    if(timeRangeSlug === 'medium_term') timeSlug = 'last 6 months'
-    if(timeRangeSlug === 'long_term') timeSlug = 'all time'
+    if (timeRangeSlug === 'medium_term') timeSlug = 'last 6 months'
+    if (timeRangeSlug === 'long_term') timeSlug = 'all time'
 
     $.ajax({
       url: `https://api.spotify.com/v1/users/${spotifyUserId}/playlists`,
@@ -93,8 +96,13 @@
           'Content-Type': 'application/json'
         },
         data: JSON.stringify({ uris: songIds, position: 0 }),
-        success: function() {
-          alert(`Done, created!\n${spotifyUrl}`)
+        success: function () {
+          document.getElementById("modal-title").innerText = "Created Playlist!"
+          document.getElementById("modal-body-text").innerHTML = `<p>Click the link below to see it</p><br><a href="${spotifyUrl}" target="_blank">${spotifyUrl}</a>`
+          document.getElementById("modal-button-ok").innerText = "OK"
+          $("#modal").modal('show')
+          $("#create-playlist").button('reset')
+          document.getElementById("create-playlist").classList.remove("btn-disabled")
         }
       })
     }
