@@ -38,8 +38,8 @@
     return clone;
   }
   var userProfileSource = document.getElementById(
-      "user-profile-template"
-    ).innerHTML,
+    "user-profile-template"
+  ).innerHTML,
     userProfileTemplate = Handlebars.compile(userProfileSource),
     userProfilePlaceholder = document.getElementById("receipt");
 
@@ -59,6 +59,45 @@
       link.click();
       document.body.removeChild(link);
     });
+  }
+
+  function createSpotifyPlaylist(timeRangeSlug, songIds) {
+    const spotifyUserId = localStorage.getItem("spotifyUserId")
+    let timeSlug = 'last month'
+    if(timeRangeSlug === 'medium_term') timeSlug = 'last 6 months'
+    if(timeRangeSlug === 'long_term') timeSlug = 'all time'
+
+    $.ajax({
+      url: `https://api.spotify.com/v1/users/${spotifyUserId}/playlists`,
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + access_token,
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({
+        name: `Receiptify ${timeSlug} ${today.toLocaleDateString("en-US")}`,
+        description: "Created by Receiptify!",
+        public: false
+      }),
+      success: function (response) {
+        addSongsToPlaylist(response.id, songIds, response.external_urls.spotify)
+      }
+    })
+
+    function addSongsToPlaylist(playlistId, songIds, spotifyUrl) {
+      $.ajax({
+        url: `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + access_token,
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify({ uris: songIds, position: 0 }),
+        success: function() {
+          alert(`Done, created!\n${spotifyUrl}`)
+        }
+      })
+    }
   }
 
   function retrieveTracks(timeRangeSlug, domNumber, domPeriod) {
@@ -112,6 +151,10 @@
         document
           .getElementById("download")
           .addEventListener("click", () => downloadImg(timeRangeSlug));
+
+        document
+          .getElementById("create-playlist")
+          .addEventListener("click", () => createSpotifyPlaylist(timeRangeSlug, data.trackList.map(track => track.uri)));
       },
     });
   }
@@ -172,6 +215,8 @@
           displayName = response.display_name.toUpperCase();
           $("#login").hide();
           $("#loggedin").show();
+
+          localStorage.setItem("spotifyUserId", response.id)
         },
       });
     } else if (client === "applemusic" && dev_token) {
