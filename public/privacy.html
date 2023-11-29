@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://cdn.fuseplatform.net/publift/tags/2/2107/fuse.js"
+    ></script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9313350967876991"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178665335-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-178665335-1');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receiptify</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript">
+      __tcfapi('addEventListener', 2, function (tcData, success) {
+        console.log(`CMP event fired: ${JSON.stringify(tcData)}`);
+      });
+    </script>
+    <script type="text/javascript">
+      (function () {
+        function makeStub() {
+          var TCF_LOCATOR_NAME = '__tcfapiLocator';
+          var queue = [];
+          var win = window;
+          var cmpFrame;
+
+          function addFrame() {
+            var doc = win.document;
+            var otherCMP = !!win.frames[TCF_LOCATOR_NAME];
+
+            if (!otherCMP) {
+              if (doc.body) {
+                var iframe = doc.createElement('iframe');
+
+                iframe.style.cssText = 'display:none';
+                iframe.name = TCF_LOCATOR_NAME;
+                doc.body.appendChild(iframe);
+              } else {
+                setTimeout(addFrame, 5);
+              }
+            }
+            return !otherCMP;
+          }
+
+          function tcfAPIHandler() {
+            var gdprApplies;
+            var args = arguments;
+
+            if (!args.length) {
+              return queue;
+            } else if (args[0] === 'setGdprApplies') {
+              if (
+                args.length > 3 &&
+                args[2] === 2 &&
+                typeof args[3] === 'boolean'
+              ) {
+                gdprApplies = args[3];
+                if (typeof args[2] === 'function') {
+                  args[2]('set', true);
+                }
+              }
+            } else if (args[0] === 'ping') {
+              var retr = {
+                gdprApplies: gdprApplies,
+                cmpLoaded: false,
+                cmpStatus: 'stub',
+              };
+
+              if (typeof args[2] === 'function') {
+                args[2](retr);
+              }
+            } else {
+              queue.push(args);
+            }
+          }
+
+          function postMessageEventHandler(event) {
+            var msgIsString = typeof event.data === 'string';
+            var json = {};
+
+            try {
+              if (msgIsString) {
+                json = JSON.parse(event.data);
+              } else {
+                json = event.data;
+              }
+            } catch (ignore) {}
+
+            var payload = json.__tcfapiCall;
+
+            if (payload) {
+              window.__tcfapi(
+                payload.command,
+                payload.version,
+                function (retValue, success) {
+                  var returnMsg = {
+                    __tcfapiReturn: {
+                      returnValue: retValue,
+                      success: success,
+                      callId: payload.callId,
+                    },
+                  };
+                  if (msgIsString) {
+                    returnMsg = JSON.stringify(returnMsg);
+                  }
+                  if (event && event.source && event.source.postMessage) {
+                    event.source.postMessage(returnMsg, '*');
+                  }
+                },
+                payload.parameter
+              );
+            }
+          }
+
+          while (win) {
+            try {
+              if (win.frames[TCF_LOCATOR_NAME]) {
+                cmpFrame = win;
+                break;
+              }
+            } catch (ignore) {}
+
+            if (win === window.top) {
+              break;
+            }
+            win = win.parent;
+          }
+          if (!cmpFrame) {
+            addFrame();
+            win.__tcfapi = tcfAPIHandler;
+            win.addEventListener('message', postMessageEventHandler, false);
+          }
+        }
+
+        makeStub();
+      })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  </head>
+  <body>
+    <nav class="navColor">
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="logout-btn">
+          <button class="time-btn" id="logout">Log Out</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container about">
+      <h1>Privacy Policy</h1>
+      <br />
+      <style>
+        #fuse-privacy-tool {
+          font-size: 0.5rem;
+        }
+      </style>
+      <div data-fuse-privacy-tool></div>
+      <br />
+      <p>
+        Spotify was developed as an open source app powered by the
+        Spotify/Last.fm/Apple Music Web API. By choosing to use this app, you
+        agree to the use of your Spotify account username and data for your top
+        artists and tracks.
+      </p>
+      <br />
+      <p>
+        None of the data used by Receiptify is stored or collected anywhere, and
+        it is NOT shared with any third parties. All information is used solely
+        for displaying your Receipt.
+      </p>
+      <br />
+      <p>
+        Although you can rest assured that your data is not being stored or used
+        maliciously, if you would like to revoke Receiptify's permissions, you
+        can visit
+        <a
+          href="http://www.spotify.com/account/apps/?_ga=2.57194153.2059435232.1677244602-1044990631.1616788427"
+          >your apps page</a
+        >
+        and click "REMOVE ACCESS" on Receiptify.
+        <a href="https://support.spotify.com/us/article/spotify-on-other-apps/"
+          >Here</a
+        >
+        is a more detailed guide for doing so.
+      </p>
+    </div>
+    <div class="footer">
+      <!-- <ins
+        class="adsbygoogle ad-centered"
+        style="display: flex"
+        data-ad-client="ca-pub-9313350967876991"
+        data-ad-slot="4000227019"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script> -->
+      <br />
+      <p class="info">
+        Made by <a href="https://michellexliu.me/">Michelle Liu</a>
+      </p>
+      <p class="info">
+        <a href="index.html">Home</a> | <a href="about.html">About</a> |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="contact.html">Contact</a>
+      </p>
+      <br />
+      <br />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="dom-to-image.min.js"></script>
+    <script src="FileSaver.min.js"></script>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script src="server.js"></script>
+    <script>
+      document
+        .querySelector('.hamburger-menu')
+        .addEventListener('click', function () {
+          document.querySelector('.navColor ul').classList.toggle('show');
+        });
+      $('#logout-btn').hide();
+    </script>
+  </body>
+</html>

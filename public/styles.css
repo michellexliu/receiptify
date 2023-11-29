@@ -1,19 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @font-face {
-  font-family: "receipt";
-  src: url("Merchant_Copy.ttf") format("truetype");
+  font-family: 'receipt';
+  src: url('Merchant_Copy.ttf') format('truetype');
+  size-adjust: 115%;
+}
+textarea,
+input.text,
+input[type='text'],
+input[type='button'],
+input[type='submit'],
+.input-checkbox,
+select {
+  -webkit-appearance: none;
+}
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 50%;
+}
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.mobile-ad {
+  display: none;
+}
+label {
+  word-break: break-all;
 }
 
 h1 {
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: Inter, 'Helvetica Neue', sans-serif;
   font-weight: 600;
   font-size: 4.5rem;
   text-align: center;
   margin-bottom: 0px;
-  margin-top:0px;
+  margin-top: 0px;
 }
 h2 {
   font-size: 2.5rem;
@@ -26,44 +55,97 @@ p {
   font-family: Helvetica, Geneva, Tahoma, sans-serif;
 }
 .logo {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 600;
   font-size: 3.3rem;
   text-align: center;
   padding-top: 15px;
+  word-break: break-word;
 }
 .info {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   text-align: center;
 }
 .period {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 15px;
 }
+
+.temp {
+  width: 100%;
+  height: 50px;
+  background-color: #ff0000;
+  padding: 0 30%;
+}
+
+#home_vrec_1,
+#home_vrec_2,
+#lastfm_vrec_1,
+#lastfm_vrec_2 {
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  top: 20px;
+}
+
+#home_vrec_2,
+#lastfm_vrec_2 {
+  right: 0;
+  left: auto;
+}
+
 .container {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.container > div {
+  width: 65%;
+  margin: auto;
+}
+.sticky-container {
+  position: absolute;
+  height: 100% !important;
+  width: 15%;
+  left: 2%;
+}
+.sticky-container__right {
+  right: 2%;
+  left: auto;
+}
+.page-container {
+  margin: auto;
+  margin-top: 80px;
+  width: 100%;
+}
+.content-container {
+  width: 100%;
+  /* position: absolute; */
+  margin: auto;
+}
 .login-btn {
   margin: 2vh auto;
   text-align: center;
   text-decoration: none;
-  padding: 2vh 4vh;
+  padding: 2vh 3vh;
   background-color: #1db954;
   font-size: 20px;
   border: none;
   cursor: pointer;
   border-radius: 10px;
   color: white;
-  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Geneva, Tahoma, sans-serif;
   width: 100%;
   display: block;
   max-width: 295px;
+}
+
+.footer p {
+  font-size: 1.5rem;
 }
 
 .apple {
@@ -72,6 +154,10 @@ p {
 
 .lastfm {
   background-color: black;
+}
+
+.logo {
+  text-transform: uppercase;
 }
 
 .time-btn {
@@ -84,7 +170,7 @@ p {
   cursor: pointer;
   border-radius: 10px;
   color: white;
-  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Geneva, Tahoma, sans-serif;
   margin: 0vh 1vh;
   width: auto;
 }
@@ -93,11 +179,17 @@ p {
   color: white;
 }
 #options,
+#num-options,
 #appleoption {
   margin: 0px auto;
+  margin-top: 1vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.flex-center {
+  justify-content: center;
+  display: flex;
 }
 .hidden {
   display: none;
@@ -108,11 +200,40 @@ p {
   flex-direction: column;
   align-items: center;
 }
+.hidden {
+  display: none;
+}
 .date {
   margin: 0vh;
 }
 .tracks {
   margin: 5px 0vh;
+}
+.new-feature {
+  margin-left: 3px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  background-color: gold;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+#search-form {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+#searchBox,
+#custom-name {
+  padding: 8px 10px;
+  border: 2px solid black;
+  font-size: 18px;
+  border-radius: 10px;
+  color: black;
+  outline: none;
+}
+#custom-name {
+  margin-bottom: 10px;
 }
 #receipt {
   clear: both;
@@ -121,7 +242,24 @@ p {
   align-items: center;
   align-content: center;
   justify-content: center;
-  margin: 25px auto;
+}
+#receipt a,
+#receipt a:visited {
+  color: black;
+  text-decoration: none !important;
+}
+.under {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+}
+.under button {
+  width: 100%;
+  margin-bottom: 10px;
 }
 .username-input {
   display: flex;
@@ -134,12 +272,18 @@ p {
   margin: 2%;
 }
 .receiptContainer {
-  background-image: url("wrinkled-paper-texture-7.jpg");
+  background-image: url('wrinkled-paper-texture-7.jpg');
   background-position: center;
   width: 340px;
-  filter: brightness(110%);
+  filter: brightness(105%);
   padding: 20px;
   text-transform: uppercase;
+}
+table {
+  width: 100%;
+}
+.receiptContainerSmaller .name {
+  width: 180px;
 }
 .begin {
   padding-left: 0vh;
@@ -150,9 +294,25 @@ p {
 p,
 table,
 .date {
-  font-family: "receipt", "Courier New", Courier, monospace;
-  font-size: 2.1rem;
+  font-family: 'receipt', 'Anonymous Pro', 'Courier New', Courier, monospace;
+  font-size: 2rem;
   line-height: 2rem;
+}
+
+.anonymous p,
+.anonymous table,
+.anonymous .date,
+.anonymous .smaller,
+.anonymous .latin {
+  font-family: 'Anonymous Pro', 'Courier New', Courier, monospace;
+  font-size: 1.75rem;
+}
+
+.latin {
+  font-size: 1.9rem;
+}
+.smaller {
+  font-size: 1.45rem;
 }
 
 #login p {
@@ -196,7 +356,83 @@ td {
 .thanks img {
   width: 70%;
 }
-
+.spotify-logo {
+  margin-top: 20px;
+  width: 80px !important;
+}
+.main-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 2vh;
+}
+.receipt-wrapper {
+  width: 50%;
+  justify-content: flex-end;
+  display: flex;
+}
+.customize {
+  min-width: 30%;
+  max-width: 50%;
+  padding-left: 2vw;
+  align-self: stretch;
+}
+.customize > p,
+#explanation p,
+#track-edit p {
+  font-family: Inter, 'Helvetica Neue', sans-serif;
+  line-height: 1.2;
+}
+#track-edit {
+  margin-top: 30px;
+}
+#track-edit div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  align-items: center;
+}
+#track-edit p {
+  margin: 0px;
+}
+#track-edit div:hover {
+  background: #e2e2e2;
+  cursor: pointer;
+}
+.customize-header {
+  font-weight: 700;
+  font-size: 36px;
+  padding-bottom: 1.5vh;
+}
+.explanation-header {
+  padding-top: 2.5vh;
+}
+#type-select-dropdown {
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  outline: none;
+  font-size: 18px;
+}
+#top-type {
+  margin: 0;
+}
+#options-header,
+#num-header,
+#font-header {
+  margin-top: 20px;
+}
+.classic {
+  font-family: 'receipt', 'Anonymous Pro', 'Courier New', Courier, monospace;
+}
+.international {
+  font-family: 'Anonymous Pro', 'Courier New', Courier, monospace;
+}
 /** -- Added for Anthems Partnership --**/
 .header-section {
   margin-top: 20px;
@@ -210,21 +446,98 @@ td {
 
 .seperator hr {
   width: 100%;
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid #e5e5e5;
 }
 
-.announcing-text {
-  color: #FD1200;
-  border-radius: 35px;
-  width: 105px;
-  height: 28px;
-  background-color: #FAE6E6;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
+.btn-group {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+.btn-group > .btn:first-of-type {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+input[type='radio' i] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  padding: initial;
+  border: initial;
+}
+#start-searching {
+  display: none;
   text-align: center;
-  padding: 4px 0;
+  font-family: Inter, 'Helvetica Neue';
+  font-size: 24px;
+  padding: 2vh 2vw;
+  background-color: #e2e2e2;
+  border-radius: 10px;
+}
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 10px !important;
+}
+.customize .btn {
+  font-weight: 500;
+  border-radius: 10px !important;
+  border: 2px solid black !important;
+  color: black !important;
+  font-size: 18px !important;
+  margin: 0px 8px;
+}
+.customize .btn-outline-secondary:hover,
+.customize .btn-check:checked + .btn-outline-secondary {
+  background-color: black !important;
+  color: white !important;
+}
+.btn-group > .btn-group:not(:first-child),
+.btn-group > .btn:not(:first-child) {
+  margin-left: -1px;
+}
+.btn-group-vertical > .btn,
+.btn-group > .btn {
+  position: relative;
+  flex: 1 1 auto;
+}
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-outline-primary:hover,
+.btn-check:checked + .btn-outline-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-outline-secondary:hover,
+.btn-check:checked + .btn-outline-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.about {
+  width: 70%;
+  text-align: center;
+  padding: 5vh 0;
+}
+
+.about p {
+  font-family: 'Inter';
+  font-size: 16px;
+}
+
+.about h2 {
+  font-size: 20px;
 }
 
 .middle-container {
@@ -232,14 +545,14 @@ td {
 }
 
 .middle-container .title {
-  font-family: "Helvetica Neue";
+  font-family: 'Helvetica Neue';
   font-size: 32px;
   font-weight: bold;
   padding: 24px 2px 16px 2px;
 }
 
 .middle-container .subtitle {
-  font-family: "Helvetica Neue";
+  font-family: 'Helvetica Neue';
   font-size: 18px;
   max-width: 400px;
   margin: 0 auto;
@@ -272,7 +585,157 @@ td {
 }
 /** -- End of Added for Anthems Partnership --**/
 
+/* NAV BEGIN */
+
+/* Navigation Bar */
+.nav-logo-p {
+  font-size: 3.7vh;
+  left: 4vw;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+nav {
+  width: 100%;
+  box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+  height: auto;
+}
+nav > ul {
+  display: inline-block;
+  list-style-type: none;
+  padding: 2vh 3vw;
+  margin: 0vh;
+  float: right;
+}
+nav > ul > li {
+  border: 1px solid transparent;
+  border-radius: 1vh;
+  padding: 1vh 1.2vw;
+  margin: 0;
+  display: inline-block;
+}
+nav > ul > li:hover {
+  border-radius: 1.5vh;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  color: white;
+  text-decoration: none;
+}
+nav a {
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: none !important;
+}
+nav > ul > li > a {
+  font-size: 18px;
+}
+.navTransparent {
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  background-color: white;
+}
+.navTransparent > ul > li:hover {
+  border: 1px solid white;
+}
+.navTransparent > ul > li > a {
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  color: white;
+  font-size: 2.5vh;
+}
+.navTransparent > a {
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  color: white;
+  font-family: var(--heading-font);
+}
+.navColor {
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  background-color: white;
+  z-index: 99;
+}
+.navColor > ul > li:hover {
+  background-color: #1db954;
+}
+#logout-btn:hover {
+  background-color: transparent !important;
+}
+.navColor > ul > li:hover a {
+  color: white;
+}
+.navColor > ul > li > a {
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  color: black;
+}
+.nav-logo-p {
+  font-family: var(--heading-font);
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  color: white;
+}
+
+.ad-centered {
+  justify-content: center;
+}
+
+.options-ad {
+  display: flex;
+  height: 100px;
+  width: 720px;
+}
+
+.navColor .hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+.navColor .hamburger-menu span {
+  background-color: grey;
+  margin: 3px 0;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+}
+
+@media (max-width: 330px) {
+  .options-ad {
+    display: inline-block;
+    width: 320px;
+  }
+}
+
+.mobile-ad {
+  padding: 2vh 0;
+}
+
+/* #home_header {
+  height: 50px;
+  width: 100%;
+  background-color: pink;
+} */
+
+/* NAV END */
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
+  .main-body {
+    width: 70%;
+  }
   #loggedin,
   #login {
     width: 100%;
@@ -280,25 +743,101 @@ td {
   .container {
     width: 100%;
   }
+  .about {
+    width: 80%;
+  }
 }
-@media only screen and (max-width: 767px) {
-  #options {
+@media only screen and (max-width: 1280px) {
+  .desktop-ad {
+    display: none;
+  }
+  .mobile-ad {
+    display: block;
+  }
+  #options,
+  #font-options {
+    flex-wrap: wrap;
+  }
+  #options label,
+  #font-options label {
+    margin-top: 10px;
+  }
+  .navColor {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+  .navColor > ul {
+    display: none;
+  }
+  .navColor > ul.show {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    background-color: white;
+    box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+    -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.07);
+    z-index: 9999;
+  }
+  .navColor a {
+    width: 100% !important;
+  }
+  .navColor ul.show li {
+    width: 100%;
+    text-align: right;
+  }
+  .navColor .hamburger-menu {
+    display: flex;
+  }
+  .receipt-wrapper {
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .customize {
+    width: 100%;
+    max-width: 100%;
+  }
+  .main-body {
     flex-direction: column;
+  }
+  .swsh-banner--desktop {
+    display: none;
+  }
+  .swsh-banner--mobile {
+    display: block;
+  }
+  #home_vrec_1,
+  #home_vrec_2,
+  #lastfm_vrec_1,
+  #lastfm_vrec_2,
+  .sticky-container {
+    display: none;
   }
   #loggedin,
   #login {
     width: 100%;
+  }
+  nav {
+    margin-top: 40px;
   }
   .time-btn {
     margin: 1vh auto;
   }
+  .btns {
+    flex-direction: column;
+  }
   .container {
     width: 100%;
+  }
+  .about {
+    width: 90%;
   }
 }
 
 @media (max-width: 900px) {
-
   .header-section {
     width: 100%;
     padding: 0 32px;

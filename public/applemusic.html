@@ -1,22 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178665335-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-178665335-1');
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Receiptify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <nav class="navColor">
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="logout-btn">
+          <button class="time-btn" id="logout">Log Out</button>
+        </li>
+      </ul>
+    </nav>
     <div class="container">
       <div id="loggedin">
         <h1>Receiptify</h1>
-        <h2>Spotify Top Track Generator</h2>
-        <form class="username-input" id="user-search">
-          <input type="text" id="username" class="form-control" name="username" placeholder="Enter Username" />
-          <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        <h2>Apple Music Top Track Generator</h2>
+        <form id="user-search">
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            name="username"
+            placeholder="Enter Username"
+          />
+          <button type="submit" id="submit" class="btn btn-primary">
+            Submit
+          </button>
         </form>
-        <p id="error-message" class="hidden">Sorry, that username is not valid. Please try again!</p>
+        <p id="error-message" class="hidden">
+          Sorry, that username is not valid. Please try again!
+        </p>
         <div id="options" class="hidden">
           <button class="btn time-btn" id="week">Last Week</button>
           <button class="btn time-btn" id="month">Last Month</button>
@@ -27,82 +71,86 @@
         <div id="receipt"></div>
       </div>
       <script id="receipt-template" type="text/x-handlebars-template">
-        <div class="receiptContainer">
-          <h2 class="logo">
+        <div class='receiptContainer'>
+          <h2 class='logo'>
             RECEIPTIFY
           </h2>
-          <p class="period">
+          <p class='period'>
             {{period}}
           </p>
-          <p class="date">
-            ORDER #000{{num}} FOR {{name}}
+          <p class='date'>
+            ORDER #000{{num}}
+            FOR
+            {{name}}
           </p>
-          <p class="date">
+          <p class='date'>
             {{time}}
           </p>
-          <table class="tracks">
+          <table class='tracks'>
             <thead>
-              <td class="begin">
+              <td class='begin'>
                 QTY
               </td>
               <td>
                 ITEM
               </td>
-              <td class="length">
+              <td class='length'>
                 AMT
               </td>
             </thead>
             {{#each tracks}}
               <tr>
-                <td class="begin">
+                <td class='begin'>
                   {{this.playcount}}
                 </td>
-                <td class="name">
-                  {{this.name}} -
+                <td class='name'>
+                  {{this.name}}
+                  -
                   {{this.artist.name}}
                 </td>
-                <td class="length">
+                <td class='length'>
                   {{this.duration}}
                 </td>
               </tr>
             {{/each}}
-            <tr class="total-counts">
-              <td class="begin" colspan="2">
+            <tr class='total-counts'>
+              <td class='begin' colspan='2'>
                 ITEM COUNT:
               </td>
-              <td class="length">
+              <td class='length'>
                 {{totalPlays}}
               </td>
             </tr>
-            <tr class="total-counts-end">
-              <td class="begin" colspan="2">
+            <tr class='total-counts-end'>
+              <td class='begin' colspan='2'>
                 TOTAL:
               </td>
-              <td class="length">
+              <td class='length'>
                 {{totalTime}}
               </td>
             </tr>
           </table>
-          <p class="date">
+          <p class='date'>
             CARD #: **** **** **** 2020
           </p>
-          <p class="date">
+          <p class='date'>
             AUTH CODE: 123420
           </p>
-          <p class="date">
-            CARDHOLDER: {{name}}
+          <p class='date'>
+            CARDHOLDER:
+            {{name}}
           </p>
-          <div class="thanks">
+          <div class='thanks'>
             <p>
               THANK YOU FOR VISITING!
             </p>
-            <img src="barcode.png" />
-            <p class="website">
+            <img src='barcode.png' />
+            <p class='website'>
               receiptify.herokuapp.com
             </p>
           </div>
         </div>
-        <button class="btn time-btn" id="download">
+        <button class='btn time-btn' id='download'>
           Download Image
         </button>
       </script>
@@ -112,6 +160,14 @@
       <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
       <script src="dom-to-image.min.js"></script>
       <script src="applemusic.js"></script>
+      <script>
+        document
+          .querySelector('.hamburger-menu')
+          .addEventListener('click', function () {
+            document.querySelector('.navColor ul').classList.toggle('show');
+          });
+        $('#logout-btn').hide();
+      </script>
     </div>
   </body>
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9313350967876991"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178665335-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-178665335-1');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receiptify</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  </head>
+  <body>
+    <nav class="navColor">
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="logout-btn">
+          <button class="time-btn" id="logout">Log Out</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container about">
+      <h1>Contact Me</h1>
+      <br />
+      <p>
+        Before reaching out about Apple Music, please read my note on the
+        <a href="about.html">about page</a>. For any other inquiries, contact me
+        at
+        <a href="mailto:michelleliu@cmu.edu?subject=Receiptify"
+          >michelleliu@cmu.edu</a
+        >, or dm me on
+        <a href="https://instagram.com/mchelle.liu">Instagram</a>! You can also
+        check out my other projects at
+        <a href="http://michellexliu.me/">my website</a>.
+      </p>
+    </div>
+    <div class="footer">
+      <br />
+      <br />
+      <p class="info">
+        Made by <a href="https://michellexliu.me/">Michelle Liu</a>
+      </p>
+      <p class="info">
+        <a href="index.html">Home</a> | <a href="about.html">About</a> |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="contact.html">Contact</a>
+      </p>
+      <br />
+      <br />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="dom-to-image.min.js"></script>
+    <script src="FileSaver.min.js"></script>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script src="server.js"></script>
+    <script>
+      document
+        .querySelector('.hamburger-menu')
+        .addEventListener('click', function () {
+          document.querySelector('.navColor ul').classList.toggle('show');
+        });
+      $('#logout-btn').hide();
+    </script>
+  </body>
+</html>

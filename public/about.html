@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9313350967876991"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Global site tag - gtag.js - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178665335-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-178665335-1');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receiptify</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  </head>
+  <body>
+    <nav class="navColor">
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="logout-btn">
+          <button class="time-btn" id="logout">Log Out</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container about">
+      <h1>About Receiptify</h1>
+      <br />
+      <p>
+        Inspired by
+        <a href="https://www.instagram.com/albumreceipts/">@albumreceipts</a>,
+        Receiptify is a tool that displays a user's 10 most-played tracks from
+        the last month, last 6 months, and all time in a Receipt-like format.
+      </p>
+      <br />
+      <br />
+      <h1>FAQ</h1>
+      <h2>Why isn't Apple Music Receiptify working?</h2>
+      <p>
+        If nothing is happening when you try to log in with Apple Music, it may
+        be because pop-ups are blocked on your browser or device. Enable them
+        and try again!<br />
+        <a
+          href="https://support.google.com/chrome/answer/95472?co=GENIE.Platform%3DiOS&hl=en"
+          target="_blank"
+          >Allowing pop-ups in Chrome</a
+        >
+        |
+        <a href="https://kb.wisc.edu/helpdesk/page.php?id=40874" target="_blank"
+          >Allowing pop-ups in Safari (iOS)</a
+        >
+      </p>
+      <br />
+      <h2>What does the amount mean in top artists and genres?</h2>
+      <p>
+        In top artists, the amount is the popularity of the artist— 1 is the
+        least popular and 10 is most. In top genres, the amount is the number of
+        times a genre appears in your top 50 artists.
+      </p>
+      <br />
+      <h2>
+        Why doesn't my Apple Music Receiptify display top tracks by time period?
+      </h2>
+      <p>
+        Currently, the Apple Music API only supports "Heavy Rotation," which
+        returns data about your most played tracks, albums, playlists, etc. from
+        an undefined time period. While I would really love to be able to break
+        down this information by time period, there is unfortunately currently
+        no way of getting this data.
+      </p>
+      <br />
+      <h2>
+        My Spotify most-played doesn't look right! How are these stats
+        determined??
+      </h2>
+      <p>
+        The short answer is, I don't know! Receiptify uses data directly
+        collected by Spotify top artists in the past month, past 6 months, and
+        all time. Since this data is updated by Spotify, I'm not sure how these
+        stats are calculated. If something looks off in your recently-played
+        data for the month, it may be because there's a slight offset in when
+        the "past month" top track calculations are made. Otherwise, you may
+        just be playing some tracks more than you thought!
+      </p>
+      <br />
+      <h2>
+        Can you show the number of times a track is played in Spotify
+        Receiptify?
+      </h2>
+      <p>
+        Unfortunately, the Spotify API does not provide this information.
+        However, if you have last.fm, you can see this information in the
+        last.fm version of Receiptify.
+      </p>
+      <br />
+      <h2>My Receiptify isn't working!</h2>
+      <p>
+        Sometimes, Receiptify might run into errors when there is increased
+        traffic. If you've already logged in, try to keep refreshing the site
+        until your receipt shows up. If that doesn't work, try clearing your
+        cookies and site data or try a different device.
+      </p>
+      <br />
+      <h2>Can you make Receiptify for [music streaming service]?</h2>
+      <p>
+        Some music streaming services don't have accessible API's to retrieve
+        your listening data. While I would love to support as many services as
+        possible, I'm a full-time student, so I'm not always able to get to
+        these requests, especially in busy times.
+      </p>
+      <br />
+      <h2>How did you make Receiptify???</h2>
+      <p>
+        Receiptify is an open-source tool! You can view the code
+        <a href="https://github.com/michellexliu/receiptify">here</a>.
+      </p>
+      <br />
+      <h2>Will Spotify steal my data?</h2>
+      <p>
+        In short: NO! For more information, view Receiptify's
+        <a href="privacy.html">Privacy Policy</a>.
+      </p>
+    </div>
+    <div class="footer">
+      <br />
+      <br />
+      <ins
+        class="adsbygoogle ad-centered"
+        style="display: flex"
+        data-ad-client="ca-pub-9313350967876991"
+        data-ad-slot="4000227019"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <br />
+      <br />
+      <p class="info">
+        Made by <a href="https://michellexliu.me/">Michelle Liu</a>
+      </p>
+      <p class="info">
+        <a href="index.html">Home</a> | <a href="about.html">About</a> |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="contact.html">Contact</a>
+      </p>
+      <br />
+      <br />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="dom-to-image.min.js"></script>
+    <script src="FileSaver.min.js"></script>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script src="server.js"></script>
+    <script>
+      document
+        .querySelector('.hamburger-menu')
+        .addEventListener('click', function () {
+          document.querySelector('.navColor ul').classList.toggle('show');
+        });
+      $('#logout-btn').hide();
+    </script>
+  </body>
+</html>

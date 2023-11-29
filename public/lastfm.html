@@ -1,117 +1,323 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script
+      async
+      src="https://cdn.fuseplatform.net/publift/tags/2/3025/fuse.js"
+    ></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] };
+      googletag.cmd.push(function () {
+        googletag.pubads().set('page_url', 'https://receiptify.herokuapp.com/');
+        console.log('set');
+      });
+    </script>
+    <script type="text/javascript">
+      __tcfapi('addEventListener', 2, function (tcData, success) {
+        console.log(`CMP event fired: ${JSON.stringify(tcData)}`);
+      });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-178665335-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-178665335-1');
+    </script>
+    <script type="text/javascript">
+      (function () {
+        function makeStub() {
+          var TCF_LOCATOR_NAME = '__tcfapiLocator';
+          var queue = [];
+          var win = window;
+          var cmpFrame;
+
+          function addFrame() {
+            var doc = win.document;
+            var otherCMP = !!win.frames[TCF_LOCATOR_NAME];
+
+            if (!otherCMP) {
+              if (doc.body) {
+                var iframe = doc.createElement('iframe');
+
+                iframe.style.cssText = 'display:none';
+                iframe.name = TCF_LOCATOR_NAME;
+                doc.body.appendChild(iframe);
+              } else {
+                setTimeout(addFrame, 5);
+              }
+            }
+            return !otherCMP;
+          }
+
+          function tcfAPIHandler() {
+            var gdprApplies;
+            var args = arguments;
+
+            if (!args.length) {
+              return queue;
+            } else if (args[0] === 'setGdprApplies') {
+              if (
+                args.length > 3 &&
+                args[2] === 2 &&
+                typeof args[3] === 'boolean'
+              ) {
+                gdprApplies = args[3];
+                if (typeof args[2] === 'function') {
+                  args[2]('set', true);
+                }
+              }
+            } else if (args[0] === 'ping') {
+              var retr = {
+                gdprApplies: gdprApplies,
+                cmpLoaded: false,
+                cmpStatus: 'stub',
+              };
+
+              if (typeof args[2] === 'function') {
+                args[2](retr);
+              }
+            } else {
+              queue.push(args);
+            }
+          }
+
+          function postMessageEventHandler(event) {
+            var msgIsString = typeof event.data === 'string';
+            var json = {};
+
+            try {
+              if (msgIsString) {
+                json = JSON.parse(event.data);
+              } else {
+                json = event.data;
+              }
+            } catch (ignore) {}
+
+            var payload = json.__tcfapiCall;
+
+            if (payload) {
+              window.__tcfapi(
+                payload.command,
+                payload.version,
+                function (retValue, success) {
+                  var returnMsg = {
+                    __tcfapiReturn: {
+                      returnValue: retValue,
+                      success: success,
+                      callId: payload.callId,
+                    },
+                  };
+                  if (msgIsString) {
+                    returnMsg = JSON.stringify(returnMsg);
+                  }
+                  if (event && event.source && event.source.postMessage) {
+                    event.source.postMessage(returnMsg, '*');
+                  }
+                },
+                payload.parameter
+              );
+            }
+          }
+
+          while (win) {
+            try {
+              if (win.frames[TCF_LOCATOR_NAME]) {
+                cmpFrame = win;
+                break;
+              }
+            } catch (ignore) {}
+
+            if (win === window.top) {
+              break;
+            }
+            win = win.parent;
+          }
+          if (!cmpFrame) {
+            addFrame();
+            win.__tcfapi = tcfAPIHandler;
+            win.addEventListener('message', postMessageEventHandler, false);
+          }
+        }
+
+        makeStub();
+      })();
+    </script>
+    <script type="text/javascript" src="ads.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Receiptify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="container">
-      <div id="loggedin">
-        <h1>Receiptify</h1>
-        <h2>Last.fm Top Track Generator</h2>
-        <form class="username-input" id="user-search">
-          <input type="text" id="username" class="form-control" name="username" placeholder="Enter Username" />
-          <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <p id="error-message" class="hidden">Sorry, that username is not valid. Please try again!</p>
-        <div id="options" class="hidden">
-          <button class="btn time-btn" id="week">Last Week</button>
-          <button class="btn time-btn" id="month">Last Month</button>
-          <button class="btn time-btn" id="three_months">Last 3 Month</button>
-          <button class="btn time-btn" id="six_months">Last 6 Months</button>
-          <button class="btn time-btn" id="year">Last Year</button>
-        </div>
-        <div id="receipt"></div>
+  <body onload="loadHome('lastfm')">
+    <nav class="navColor">
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <script id="receipt-template" type="text/x-handlebars-template">
-        <div class="receiptContainer">
-          <h2 class="logo">
-            RECEIPTIFY
-          </h2>
-          <p class="period">
-            {{period}}
-          </p>
-          <p class="date">
-            ORDER #000{{num}} FOR {{name}}
-          </p>
-          <p class="date">
-            {{time}}
-          </p>
-          <table class="tracks">
-            <thead>
-              <td class="begin">
-                QTY
-              </td>
-              <td>
-                ITEM
-              </td>
-              <td class="length">
-                AMT
-              </td>
-            </thead>
-            {{#each tracks}}
-              <tr>
-                <td class="begin">
-                  {{this.playcount}}
-                </td>
-                <td class="name">
-                  {{this.name}} -
-                  {{this.artist.name}}
-                </td>
-                <td class="length">
-                  {{this.duration}}
-                </td>
-              </tr>
-            {{/each}}
-            <tr class="total-counts">
-              <td class="begin" colspan="2">
-                ITEM COUNT:
-              </td>
-              <td class="length">
-                {{totalPlays}}
-              </td>
-            </tr>
-            <tr class="total-counts-end">
-              <td class="begin" colspan="2">
-                TOTAL:
-              </td>
-              <td class="length">
-                {{totalTime}}
-              </td>
-            </tr>
-          </table>
-          <p class="date">
-            CARD #: **** **** **** 2021
-          </p>
-          <p class="date">
-            AUTH CODE: 123421
-          </p>
-          <p class="date">
-            CARDHOLDER: {{name}}
-          </p>
-          <div class="thanks">
-            <p>
-              THANK YOU FOR VISITING!
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="logout-btn">
+          <button class="time-btn" id="logout">Log Out</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="page-container">
+      <div class="sticky-container">
+        <div id="lastfm_vrec_1"></div>
+      </div>
+      <div class="sticky-container sticky-container__right">
+        <div id="lastfm_vrec_2"></div>
+      </div>
+      <div class="content-container">
+        <div class="container">
+          <div id="loggedin">
+            <h1>Receiptify</h1>
+            <h2>Last.fm Top Track Generator</h2>
+            <form class="username-input" id="user-search">
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                name="username"
+                placeholder="Enter Username"
+              />
+              <button type="submit" id="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
+            <p id="error-message" class="hidden">
+              Sorry, that username is not valid. Please try again!
             </p>
-            <img src="barcode.png" />
-            <p class="website">
-              receiptify.herokuapp.com
-            </p>
+            <div id="options" class="hidden">
+              <button class="btn time-btn" id="week">Last Week</button>
+              <button class="btn time-btn" id="month">Last Month</button>
+              <button class="btn time-btn" id="three_months">
+                Last 3 Month
+              </button>
+              <button class="btn time-btn" id="six_months">
+                Last 6 Months
+              </button>
+              <button class="btn time-btn" id="year">Last Year</button>
+            </div>
+            <div id="receipt"></div>
           </div>
+          <script id="receipt-template" type="text/x-handlebars-template">
+            <div class='receiptContainer'>
+              <h2 class='logo'>
+                RECEIPTIFY
+              </h2>
+              <p class='period'>
+                {{period}}
+              </p>
+              <p class='date'>
+                ORDER #000{{num}}
+                FOR
+                {{name}}
+              </p>
+              <p class='date'>
+                {{time}}
+              </p>
+              <table class='tracks'>
+                <thead>
+                  <td class='begin'>
+                    QTY
+                  </td>
+                  <td>
+                    ITEM
+                  </td>
+                  <td class='length'>
+                    AMT
+                  </td>
+                </thead>
+                {{#each tracks}}
+                  <tr>
+                    <td class='begin'>
+                      {{this.playcount}}
+                    </td>
+                    <td class='name'>
+                      {{this.name}}
+                      -
+                      {{this.artist.name}}
+                    </td>
+                    <td class='length'>
+                      {{this.duration}}
+                    </td>
+                  </tr>
+                {{/each}}
+                <tr class='total-counts'>
+                  <td class='begin' colspan='2'>
+                    ITEM COUNT:
+                  </td>
+                  <td class='length'>
+                    {{totalPlays}}
+                  </td>
+                </tr>
+                <tr class='total-counts-end'>
+                  <td class='begin' colspan='2'>
+                    TOTAL:
+                  </td>
+                  <td class='length'>
+                    {{totalTime}}
+                  </td>
+                </tr>
+              </table>
+              <p class='date'>
+                CARD #: **** **** **** 2023
+              </p>
+              <p class='date'>
+                AUTH CODE: 123421
+              </p>
+              <p class='date'>
+                CARDHOLDER:
+                {{name}}
+              </p>
+              <div class='thanks'>
+                <p>
+                  THANK YOU FOR VISITING!
+                </p>
+                <img src='barcode.png' />
+                <p class='website'>
+                  receiptify.herokuapp.com
+                </p>
+              </div>
+            </div>
+            <button class='btn time-btn' id='download'>
+              Download Image
+            </button>
+          </script>
         </div>
-        <button class="btn time-btn" id="download">
-          Download Image
-        </button>
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-      <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-      <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-      <script src="config.js"></script>
-      <script src="dom-to-image.min.js"></script>
-      <script src="lastfm.js"></script>
+        <div id="lastfm_mrec_1"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="config.js"></script>
+        <script src="dom-to-image.min.js"></script>
+        <script src="lastfm.js"></script>
+        <script>
+          document
+            .querySelector('.hamburger-menu')
+            .addEventListener('click', function () {
+              document.querySelector('.navColor ul').classList.toggle('show');
+            });
+          $('#logout-btn').hide();
+        </script>
+      </div>
     </div>
   </body>
 </html>
