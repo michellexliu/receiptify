@@ -487,6 +487,10 @@ const newTab = () => {
   });
 };
 
+const getCurrentYear = () => {
+  return TODAY.getFullYear();
+}
+
 const getMonthYear = () => {
   // Create a new Date object for the current date and time
 
@@ -683,6 +687,7 @@ const displayReceipt = (response, stats) => {
     itemCount: tracksFormatted.length,
     isStats: type === 'stats',
     isInternational: font === 'international',
+    currentYear: getCurrentYear(),
   });
 
   if (type === 'build-receipt') {
