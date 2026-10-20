@@ -138,8 +138,10 @@ function wrapNonAlphanumericChars(str) {
 }
 
 const getMinSeconds = (duration_ms) => {
-  const minutes = Math.floor(duration_ms / 60000);
-  const seconds = ((duration_ms % 60000) / 1000).toFixed(0);
+  // Round to whole seconds first so 5:59.6 becomes 6:00 rather than 5:60
+  const totalSeconds = Math.round(duration_ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
   const durationFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   return durationFormatted;
 };
